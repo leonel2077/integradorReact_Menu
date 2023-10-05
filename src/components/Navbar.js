@@ -5,9 +5,9 @@ const Navbar = () => {
   return (
     <nav>
       <ul className="menus">
-        {menuItems.map((menu, index) => { 
+        {menuItems.map((menu, index) => {  // recorro menuItems
           const depthLevel = 0;
-          return <MenuItems items={menu} key={index} depthLevel={depthLevel}/>;
+          return <MenuItems items={menu} key={index} depthLevel={depthLevel}/>; // crea componente MenuItems 
         })}
       </ul>
     </nav>

@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import Dropdown from './Dropdown';
 
 const MenuItems = ({ items, depthLevel }) => {
-  const [dropdown, setDropdown] = useState(false);
-  let ref = useRef();
+  const [dropdown, setDropdown] = useState(false); // estados del menu desplegables
+  let ref = useRef(); // permite el uso de los event listeners
 
   useEffect(() => {
     const handler = (event) => {
-     if (dropdown && ref.current && !ref.current.contains(event.target)) {
+     if (dropdown && ref.current && !ref.current.contains(event.target)) { // verifica si el sub menu esta abierto
       setDropdown(false);
      }
     };
@@ -22,7 +22,7 @@ const MenuItems = ({ items, depthLevel }) => {
 
   return (
     <li className="menu-items" ref={ref}>
-      {items.submenu ? (
+      {items.submenu ? ( // verifica si hay un submenu
         <>
           <button type="button" aria-haspopup="menu" 
             aria-expanded={dropdown ? "true" : "false"}
@@ -33,7 +33,7 @@ const MenuItems = ({ items, depthLevel }) => {
           <Dropdown submenus={items.submenu} dropdown={dropdown} depthLevel={depthLevel}/>
         </>
       ) : (
-        <a href={items.url}>{items.title}</a>
+        <a href="/">{items.title}</a> // sino renderiza un link
       )}
     </li>
   );
